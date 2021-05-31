@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compitable" content="ie=edge">
+	 <title>Tip calculator</title>
+		<link rel="stylesheet" href="style.css">	
+</head>
+
+<!-- Body part  !-->
+<body>
+	<div class="container">
+		<h1>TIP CALCULATOR</h1>
+	<div class="calculator">
+	<form>
+		<p>How much was your bill ?</p>
+		<span>Rs. <input type="text" id="tips" placeholder="Bill Amount"></span>
+		<p>How was our services ?</p>
+
+		<select id="slct">
+			<option>-- Choose an option --</option>
+			<option value="0.15">15% - Outstanding</option>
+			<option value="0.10">10% - Good</option>
+			<option value="0.05">5% - it's ok</option>
+		</select>
+	</form>
+
+		<p>How many poeple are sharing the bill ?</p>
+		<input type="text" id="piple" placeholder="Number of poeple"> People
+		<br><br>
+
+		<button type="button" id="clc">Calculate!</button>
+	
+	</div>
+	
+	<div id="totalTip">
+    <sup>Rs.</sup><span id="tip">0.00</span>
+    <small id="each">each</small>
+  	</div>
+
+</div>
+ 
+
+ <!-- Javascript !-->
+<script type="text/javascript">
+
+function calculatetip(){
+
+		var tips = document.getElementById("tips").value; 
+		var slct = document.getElementById("slct").value;
+		var piple = document.getElementById("piple").value;
+
+		if(tips ==="" || slct == 0){
+			alert("Please enter the values");
+			return;
+		}
+
+		if(piple===""|| piple <=1){
+			piple = 1;
+			document.getElementById("each").style.display = "none";
+		}
+			else{
+				document.getElementById("each").style.display = "block";
+				}
+
+			var total = (tips * slct )/piple;
+			total = Math.round(total);
+			 document.getElementById("totalTip").style.display = "block";
+  			document.getElementById("tip").innerHTML = total;
+		
+	}
+
+
+	document.getElementById("totalTip").style.display = "none";
+	document.getElementById("each").style.display = "none";
+
+	document.getElementById("clc").onclick = function(){
+		calculatetip()
+	};
+</script>
+
+</body>
+</html>
